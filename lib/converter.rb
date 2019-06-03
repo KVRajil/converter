@@ -1,8 +1,10 @@
-
+require 'set'
+require_relative 'dictionary'
+require_relative 'digit_char_array'
 
 class Converter
 
-  INVALID_DIGITS = %w(0,1)
+  INVALID_DIGITS = %w(0 1)
   TWO_WORDS_SET  = 5
   attr_accessor :phone_number,
                 :phone_number_words
@@ -20,6 +22,10 @@ class Converter
   def to_words
     return 'Invalid phone number!' unless phone_number_valid?
     generate_words
+  end
+
+  def phone_number_valid?
+    !phone_number.nil? && phone_number.to_s.length ==10 && !contains_one_zero?
   end
 
   private
@@ -63,10 +69,6 @@ class Converter
 
   def generate_product(char_array)
     char_array.shift.product(*char_array).map(&:join).to_set
-  end
-
-  def phone_number_valid?
-    !phone_number.nil? && phone_number.to_s.length ==10 && !contains_one_zero?
   end
 
   def invalid_digits
