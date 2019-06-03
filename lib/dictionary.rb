@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Dictionary
   def self.fetch
     words = Set.new

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'set'
 require_relative 'dictionary'
 require_relative 'digit_char_array'
