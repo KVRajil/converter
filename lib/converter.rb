@@ -39,9 +39,9 @@ class Converter
 
     one_word_combinations = select_meaningful_words(phone_number_chars).to_a
 
-    TWO_WORDS_SET.times do |x|
-      first_word  = select_meaningful_words(phone_number_chars[0..2+x]).to_a
-      second_word = select_meaningful_words(phone_number_chars[3+x..9]).to_a
+    TWO_WORDS_SET.times do |index|
+      first_word  = select_meaningful_words(phone_number_chars[0..2+index]).to_a
+      second_word = select_meaningful_words(phone_number_chars[3+index..9]).to_a
       two_word_combinations << first_word.product(second_word)
     end
     two_word_combinations = two_word_combinations.flatten(1)
