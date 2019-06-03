@@ -2,9 +2,6 @@ require 'pry'
 require 'benchmark'
 require 'prettyprint'
 
-require 'set'
-require_relative 'dictionary'
-require_relative 'digit_char_array'
 require_relative 'converter'
 
 puts 'Enter a 10 digit phone number'
