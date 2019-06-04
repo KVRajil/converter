@@ -12,4 +12,4 @@ instructions to run the code
     2. input phone number through console
     
 3. run the specs
-    rspec specs
+    1. rspec specs
