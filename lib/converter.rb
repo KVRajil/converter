@@ -3,6 +3,7 @@
 require 'set'
 require_relative 'dictionary'
 
+# Convert phone number to meaningfull word(s) based on available dictionary.
 class Converter
 
   INVALID_DIGITS = %w(0 1)
@@ -35,6 +36,7 @@ class Converter
     generate_words
   end
 
+  # Validate the phone number
   def phone_number_valid?
     !phone_number.nil? && phone_number.to_s.length ==10 && !contains_one_zero?
   end
@@ -43,11 +45,12 @@ class Converter
 
   def generate_words
     two_word_combinations   = []
-    one_word_combinations   = []
     three_word_combinations = []
-
+    #this will find all the one word combinations
     one_word_combinations = select_meaningful_words(phone_number_chars).to_a
 
+    #this will find all the two words combinations
+    # 3+7, 4+6, 5+5, 6+4, 7+3, 10, 3+3+4, 3+4+3, 4+3+3
     TWO_WORDS_SET.times do |index|
       first_word  = select_meaningful_words(phone_number_chars[0..2+index]).to_a
       second_word = select_meaningful_words(phone_number_chars[3+index..9]).to_a
@@ -55,6 +58,8 @@ class Converter
     end
     two_word_combinations = two_word_combinations.flatten(1)
 
+    #this will find all the three words combinations
+    # 3+3+4, 3+4+3, 4+3+3
     THREE_LETTER_COMBINATION.permutation.to_a.uniq.each do |combination|
       words = []
       combination.each_with_index do |_, index|

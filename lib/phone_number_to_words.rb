@@ -4,6 +4,7 @@ require 'prettyprint'
 
 require_relative 'converter'
 
+# Get user input
 puts 'Enter a 10 digit phone number'
 phone_number = gets.chomp.to_i
 words = nil
