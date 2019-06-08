@@ -49,6 +49,60 @@ describe Converter do
                             ['onto', 'sup', 'taj'],
                             ['onto', 'suq', 'taj']]}
 
+  let(:words_combinations2) { ['catamounts',
+                              ['act', 'amounts'],
+                              ['act', 'contour'],
+                              ['bat', 'amounts'],
+                              ['bat', 'contour'],
+                              ['cat', 'amounts'],
+                              ['cat', 'contour'],
+                              ['acta', 'mounts'],
+                              ['act', 'boo', 'tots'],
+                              ['act', 'boo', 'tour'],
+                              ['act', 'con', 'tots'],
+                              ['act', 'con', 'tour'],
+                              ['act', 'coo', 'tots'],
+                              ['act', 'coo', 'tour'],
+                              ['bat', 'boo', 'tots'],
+                              ['bat', 'boo', 'tour'],
+                              ['bat', 'con', 'tots'],
+                              ['bat', 'con', 'tour'],
+                              ['bat', 'coo', 'tots'],
+                              ['bat', 'coo', 'tour'],
+                              ['cat', 'boo', 'tots'],
+                              ['cat', 'boo', 'tour'],
+                              ['cat', 'con', 'tots'],
+                              ['cat', 'con', 'tour'],
+                              ['cat', 'coo', 'tots'],
+                              ['cat', 'coo', 'tour'],
+                              ['act', 'boot', 'mus'],
+                              ['act', 'boot', 'nus'],
+                              ['act', 'boot', 'our'],
+                              ['act', 'coot', 'mus'],
+                              ['act', 'coot', 'nus'],
+                              ['act', 'coot', 'our'],
+                              ['bat', 'boot', 'mus'],
+                              ['bat', 'boot', 'nus'],
+                              ['bat', 'boot', 'our'],
+                              ['bat', 'coot', 'mus'],
+                              ['bat', 'coot', 'nus'],
+                              ['bat', 'coot', 'our'],
+                              ['cat', 'boot', 'mus'],
+                              ['cat', 'boot', 'nus'],
+                              ['cat', 'boot', 'our'],
+                              ['cat', 'coot', 'mus'],
+                              ['cat', 'coot', 'nus'],
+                              ['cat', 'coot', 'our'],
+                              ['acta', 'mot', 'mus'],
+                              ['acta', 'mot', 'nus'],
+                              ['acta', 'mot', 'our'],
+                              ['acta', 'not', 'mus'],
+                              ['acta', 'not', 'nus'],
+                              ['acta', 'not', 'our'],
+                              ['acta', 'oot', 'mus'],
+                              ['acta', 'oot', 'nus'],
+                              ['acta', 'oot', 'our']]}
+
 
 
   context 'Convert given phone number' do
@@ -66,6 +120,11 @@ describe Converter do
     it 'return all possible words or combinations of words from the provided dictionary' do
       converter3 = Converter.new(phone_number1)
       expect(converter3.to_words).to match_array(words_combinations1)
+    end
+
+    it 'return all possible words or combinations of words from the provided dictionary' do
+      converter3 = Converter.new(phone_number2)
+      expect(converter3.to_words).to match_array(words_combinations2)
     end
   end
 
