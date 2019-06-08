@@ -2,24 +2,32 @@
 
 require 'set'
 require_relative 'dictionary'
-require_relative 'digit_char_array'
 
 class Converter
 
   INVALID_DIGITS = %w(0 1)
   TWO_WORDS_SET  = 5
   THREE_LETTER_COMBINATION  = [3, 3, 4]
+  DIGIT_CHAR_MAP = {
+                      '2' => %w(a b c),
+                      '3' => %w(d e f),
+                      '4' => %w(g h i),
+                      '5' => %w(j k l),
+                      '6' => %w(m n o),
+                      '7' => %w(p q r s),
+                      '8' => %w(t u v),
+                      '9' => %w(w x y z)
+                  }
+
   attr_accessor :phone_number,
                 :phone_number_words
-  attr_reader   :digit_char_map,
-                :dictionary
+  attr_reader   :dictionary
 
 
   def initialize(phone_number)
     @phone_number       = phone_number
     @phone_number_words = Set.new
     @dictionary         = Dictionary.fetch
-    @digit_char_map     = DigitCharArray.fetch
   end
 
   def to_words
@@ -74,7 +82,7 @@ class Converter
   end
 
   def phone_number_chars
-    phone_number_array.map{|digit|digit_char_map[digit]}
+    phone_number_array.map{|digit|DIGIT_CHAR_MAP[digit]}
   end
 
   def phone_number_array
